@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Solutions Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, sans-serif; }
+
+    section {
+      padding: 50px 20px;
+      text-align: center;
+      min-height: 80vh;
+    }
+
+    #home {
+      background: linear-gradient(to right, #00bfa6, #0077ff);
+      height: 100%;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      background: transparent;
+    }
+
+    .navbar.scrolled {
+      background-color: grey;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      color: #073db3b0;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .logobox{
+        background-color: rgb(222, 222, 224);
+        width: 100px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: 800;
+    }
+
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .navbar.open .nav-links {
+      display: flex;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 10px;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    /*Start*/
+
+    .first{
+      background-image: url(https://www.aeologic.com/blog/wp-content/uploads/2023/08/IT-Services-and-Solutions-1536x885.jpg);
+      background-position: center;
+      background-repeat: no-repeat; 
+      background-size: cover;
+      display: flex;
+      flex: 1 1 10%;
+      border-radius: 10px;
+    }
+    @media (min-width:1025px){
+      .first{
+          flex: 1 1 50%;
+          border-radius: 20px;
+        }
+    }
+
+    .textbox{
+        background-color: none;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 60%;
+        text-align: left;
+        font-family: "montserrat";
+    }
+     @media (min-width:601px) and (max-width: 1024px){
+      .textbox{
+       font-size: 1.15em;
+      }
+    }
+    @media (min-width:1025px){
+        .textbox{
+            height: 40vh;
+            flex: 1 1 25%;
+            font-size: 1.2em;
+        }
+    }
+
+    .firtbox{
+        background-color: none;
+        height:150vh;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 45%;
+    }
+     @media (min-width:1025px){
+        .firtbox{
+            height: 100vh;
+            flex: 1 1 30%;
+        }
+    }
+
+    /*Headlines*/
+
+    .sectext{
+        background-color: none;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 45%;
+        text-align: left;
+        font-family: "montserrat";
+        min-width: 400px;
+        font-size: 22px;
+        margin-top: -400px;
+        padding: 20px;
+    }
+    @media (min-width:601px) and (max-width: 1024px){
+        .sectext{
+          margin-top: 0px;
+          flex: 1 1 0%;
+        }
+    }
+
+    @media (min-width:1025px){
+        .sectext{
+          margin-top: -30px;
+          flex: 1 1 0%;
+        }
+    }
+
+    .sectext a,
+    .sectext a:hover{
+      background-color: grey;
+      border-radius: 10px;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    /*Article*/
+      
+    .article{
+      background-color: teal;
+      width: 100%;
+      height: 30%;
+      font-size: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 65 0;
+      font-family: 'montserrat';
+      margin-bottom: 30px;
+    }
+
+    /*Second*/
+    /*Debuggin*/
+
+    .imgst{
+      background-color: none  ;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex: 100%;
+      gap: 10px;
+      margin-top: 50px;
+    }
+
+    .imgsec{
+      background-image: url(https://darnelltechnical.com/wp-content/uploads/2024/03/coding-freepik.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 50vh;
+      border-radius: 15px;
+      display: flex;
+      flex: 1 1 40%;
+    }
+     @media (min-width: 601px) {
+      .imgsec {
+        height: 87vh;
+      }
+    }
+     @media (min-width: 1025px) {
+      .imgsec {
+        height: 90vh;
+      }
+    }
+
+    .imgtext{
+      background: linear-gradient(to right, #819996, #0077ff);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      font-family: "montserrat";
+      font-size: 14px;
+      min-width: 400px;
+      gap: 10px;
+      flex: 1 1 40%;
+      padding: 25px;
+    }
+     @media (min-width: 1025px) {
+      .imgtext {
+        height: 95vh;
+        font-size: 1.05em;
+        gap: 10px;
+      }
+    }
+
+    /*imgsec2*/
+
+    .imgsec2{
+      background-image: url(https://media.istockphoto.com/id/2114295998/photo/asian-and-indian-developer-devops-team-discussion-about-coding-promgram-with-software.jpg?s=612x612&w=0&k=20&c=LKwTqUnNPgasiwnhKSHfnwxZMxQdD5ziIZRrhGSOlu0=);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 50vh;
+      border-radius: 15px;
+      display: flex;
+      flex: 1 1 40%;
+    }
+     @media (min-width: 601px) {
+      .imgsec2 {
+        height: 87vh;
+      }
+    }
+     @media (min-width: 1025px) {
+      .imgsec2 {
+        height: 95vh;
+      }
+    }
+
+    /*imgsec3*/
+
+    .imgsec3{
+      background-image: url(https://media.istockphoto.com/id/2148575948/photo/asian-and-indian-developer-devops-team-working-about-coding-promgram-with-software-computer.jpg?s=612x612&w=0&k=20&c=W_xzf9S0OfBzvjQ0szLnQs-d62O2QKxaRQAMqNKTXrQ=);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 50vh;
+      border-radius: 15px;
+      display: flex;
+      flex: 1 1 40%;
+    }
+     @media (min-width: 601px) {
+      .imgsec3 {
+        height: 85vh;
+      }
+    }
+     @media (min-width: 1025px) {
+      .imgsec3 {
+        height: 95vh;
+      }
+    }
+
+    /*imgsec4*/
+
+    .imgsec4{
+      background-image: url(https://media.istockphoto.com/id/1830163120/photo/group-of-computer-programmers-talking-while-working-at-it-office.jpg?s=612x612&w=0&k=20&c=nnhMhZcifOMTSPiZJ72QUDVWxcSgCyth-2GQaDTgzx0=);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 50vh;
+      border-radius: 15px;
+      display: flex;
+      flex: 1 1 40%;
+    }
+     @media (min-width: 601px) {
+      .imgsec4 {
+        height: 95vh;
+      }
+    }
+     @media (min-width: 1025px) {
+      .imgsec4 {
+        height: 95vh;
+      }
+    }
+
+    /*imgsec5*/
+
+    .imgsec5{
+      background-image: url(https://media.istockphoto.com/id/2149809166/photo/tech-team-professionals-collaborate-discuss-software-development-strategies-in-modern-office.jpg?s=612x612&w=0&k=20&c=4AqexK2PYwP22YooddyFMDD5G5rKFj66g9eHxwTJpjI=);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 50vh;
+      border-radius: 15px;
+      display: flex;
+      flex: 1 1 40%;
+    }
+     @media (min-width: 601px) {
+      .imgsec5 {
+        height: 95vh;
+      }
+    }
+     @media (min-width: 1025px) {
+      .imgsec5 {
+        height: 95vh;
+      }
+    }
+
+    /*Summary*/
+
+    .summary{
+      background-color: none;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 20px;
+      gap: 10px;
+    }
+    @media (min-width:1025px){
+      .summary{
+        font-size: 1.6em;
+      }
+    }
+
+    .bs{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      gap: 5px;
+    }
+    .big{
+      background-color: none;
+      width: 100%;
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .small{
+      background-image: url(https://media.istockphoto.com/id/1466262366/photo/software-development-branching-strategy-process-workflow-with-flowchart-diagram-showing.jpg?s=612x612&w=0&k=20&c=U3BQoK-xdLwhPKLdt8XxTfmTejJvcuGUzfDdACYiJN8=);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 10vh;
+      display: flex;
+      flex: 1 1 20%;
+    }
+
+    .small1{
+      background-image: url(https://media.istockphoto.com/id/1467898270/photo/ux-graphic-designer-planning-application-process-development-prototype-wireframe-for-web.jpg?s=612x612&w=0&k=20&c=gOyKfAj4sJY9SZ4tjsHQgic61n8w2ynXyea4XhWt2yE=);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 10vh;
+      display: flex;
+      flex: 1 1 20%;
+    }
+
+     .small2{
+      background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5rb42_PvW5Yr2CgECI6pZLbPSkOBFF-VU_g&s);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 10vh;
+      display: flex;
+      flex: 1 1 20%;
+    }
+
+    .textboxs{
+      background-color: none;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      font-size: 21px;
+      flex: 1 1 20%;
+    }
+
+    /*Footer*/
+
+    .footer{
+      background-color: #00bfa6;
+      height: 100%;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      flex: 100%;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+     @media (min-width:601px) and (max-width:1024px){
+      .footer{
+          flex-direction: row;
+          justify-content: space-evenly;
+        }
+      }
+    @media (min-width:1024px){
+      .footer{
+          flex-direction: row;
+          justify-content: space-evenly;
+        }
+      }
+
+    /*Newsletter*/
+
+    .news{
+      background-color: black;
+      color: white;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      font-size: 30px;
+      text-align: left;
+      padding: 20px;
+      flex: 1 1 30%;
+    }
+    @media(min-width:1025px){
+      .news{
+        font-size: 3em;
+      }
+    }
+    
+    form{
+      width: 70%;
+      height: 10vh;
+      display: flex;
+      flex-direction: column;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    form input{
+      height: 30vh;
+      margin-bottom: 1%;
+      border-radius: 5px;
+    }
+    button{
+      background-color: #6f7a7a;
+      width: 13%;
+      height: 5vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /*Headlines*/
+
+    .headlines{
+      background-color: none;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      flex-direction: 1 1 30%;
+      gap: 5px;
+      min-width: 400px;
+    }
+    @media (min-width:601px) and (max-width:1024px){
+      .headlines{
+          justify-content: space-evenly;
+        }
+      }
+    @media (min-width:1024px){
+      .headlines{
+          justify-content: space-evenly;
+          gap: 20px;
+          padding-left: 150px;
+        }
+      }
+
+    .headlines a{
+      text-decoration: none;
+      color: black;
+      font-size: 20px;
+    }
+    @media(min-width:1025px){
+      .headlines{
+          font-weight: 800;
+      }
+    }
+
+    .headlines a:hover{
+      color: purple;
+      text-decoration: underline;
+    }
+
+    /*Media*/
+
+    .media{
+      background-color: none;
+      height: 90%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 400px;
+      flex: 1 1 10%;
+    }
+    @media(min-width:1025px){
+      .media{
+        margin-top: 50px;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .mediamax{
+      background-color: none;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+     @media(min-width:1025px){
+      .mediamax{
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+
+    .mediamin{
+      background-image: url(data:image/jpeg;base64,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);
+      background-position: center;
+      background-size: cover;
+      background-repeat: repeat;
+      width: 10%;
+      height: 7vh;
+    }
+
+    .mediamin1{
+      background-image: url(https://i.pinimg.com/736x/21/d6/7f/21d67f1d6b3be5bb2e39395311c77fc6.jpg);
+       background-position: center;
+      background-size: cover;
+      background-repeat: repeat;
+      width: 10%;
+      height: 7vh;
+    }
+
+    .mediamin2{
+    background-image: url(https://thumbs.dreamstime.com/b/facebook-logo-icon-voronezh-russia-january-black-square-soft-shadow-171161186.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat;
+    width: 10%;
+    height: 7vh;
+   }
+
+    .mediamin3{
+      background-image: url(https://static.vecteezy.com/system/resources/thumbnails/065/386/652/small_2x/snapchat-circle-logo-icon-snapchat-app-transparent-background-premium-social-media-design-for-digital-download-free-png.png);
+       background-position: center;
+      background-size: cover;
+      background-repeat: repeat;
+      width: 15%;
+      height: 7vh;
+    }
+
+    .footend{
+      background-color: #00bfa6;
+      width: 100%;
+      height: 20vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 10px;
+    }
+
+    .foot{
+      background-color: black;
+      width: 95%;
+      height: 0vh;
+    }
+
+
+
+
+
+
+
+    @media (min-width: 768px) {
+      .menu-toggle { display: none; }
+      .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+      <div class="logo">
+        <div class="logobox">ITech</div>
+      </div>
+      <div class="nav-links" id="nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">About</a>
+        <a href="#portfolio">Technology</a>
+        <a href="#contact">Development</a>
+        <a href="#contact">Learning & Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="menu-toggle" id="menu-toggle">
+        <div></div><div></div><div></div>
+      </div>
+    
+    </nav>
+
+    <!--First-->
+    
+    <section id="home">
+      <div class="firtbox">
+        <div class="first"></div><br>
+    <div class="textbox">
+        <h1>5 Essential Tips for Becoming a Better Developer: Beyond the Code</h3><br>
+        Becoming a better developer extends far beyond merely syntax and semantics; 
+        it is about cultivating a meticulous approach to craft, collaboration, and 
+        continuous self-improvement. This guide will provide actionable, in-depth strategies to elevate your skills, efficiency, and professional value.
+    </div>
+    </div>
+    
+    <!--Headlines-->
+
+    <div class="sectext">
+        <a href="#">Headlines</a> <br><br>
+        <p>
+          *The Foundation of Excellence: Mastering Clean Code <br><br><br>
+          *Building Blocks: Problem Solving & Core Computer Science <br><br><br>
+          *The Power of Practice: Real Projects & Consistency <br><br><br>
+          *Collaboration and Feedback: Growing with Others <br><br><br>
+          *The Developer's Mindset: Continuous Learning and Curiosity
+        </p>
+      </div>
+      </section>  
+      
+      <!--Imgst-->
+
+      <div class="imgst">
+          <div class="imgsec"></div>
+          <div  class="imgtext">
+            <h2>The Foundation of Excellence: Mastering Clean Code</h2>
+                <p>
+                  Writing code that functions correctly is the baseline; writing clean code is the mastery. 
+                  Clean code is a philosophy centered on creating software that is readable, maintainable, 
+                  and easily understandable by anyone on the team—including your future self three months 
+                  from now. It significantly reduces technical debt and improves project velocity.
+                  <h4>Key Strategies:</h4>
+                  <b>Descriptive Naming:</b>Use names for variables, functions, and classes that clearly 
+                  convey their purpose. Clarity is paramount.
+                  <b>Keep it Simple (KISS):</b>Avoid unnecessary complexity. Break down large functions 
+                  into smaller, single-purpose functions.
+                  <b>Refactoring is Key:</b>Regularly clean up and restructure existing code to improve 
+                  its design and readability without changing its external behavior.
+                  <b>Invest in Knowledge:</b>Books like Clean Code by Robert C. Martin are valuable 
+                  resources for understanding best practices.
+                </p>
+          </div>
+      </div>
+
+      <div class="imgst">
+          <div class="imgsec2"></div>
+          <div  class="imgtext">
+            <h2>Building Blocks: Problem Solving & Core Computer Science</h2>
+                <p>
+                  Programming is fundamentally about efficient problem-solving. Strong foundational 
+                  knowledge acts as your mental toolbox, providing the right tools to tackle any challenge, 
+                  regardless of the language or framework you are currently using.
+                  <h4>Key Strategies:</h4>
+                  <b>Understand the Problem Before Coding:</b>This is perhaps the most critical step. 
+                  Before typing a single line of code, take ample time to fully understand the 
+                  actual problem you are trying to solve. Sketch out a plan using pseudocode, 
+                  flowcharts, or whiteboards.
+                  <b>Master Data Structures & Algorithms (DSA):</b>DSA are the fundamental building blocks 
+                  of efficient software. A strong grasp of concepts like arrays, linked lists, hash tables, 
+                  and sorting algorithms helps you choose the most appropriate and performant approach for
+                  different scenarios.
+                  <b>Practice Analytical Thinking:</b>Regularly challenge your brain with 
+                  coding puzzles and algorithmic problems on platforms like LeetCode or HackerRank. 
+                  This builds mental agility and improves your ability to break down complex problems 
+                  into manageable steps.
+                </p>
+          </div>
+      </div>
+
+      <div class="imgst">
+          <div class="imgsec3"></div>
+          <div  class="imgtext">
+            <h2>The Power of Practice: Real Projects & Consistency</h2>
+                <p>
+                  Knowledge remains purely theoretical until applied. Consistent, deliberate 
+                  practice on real-world projects is how you translate learning into tangible, 
+                  demonstrable skills and build a robust portfolio that truly stands out.
+                  <h4>Key Strategies:</h4>
+                  <b>Code Daily, Consistently:</b>Develop a habit of coding every day, even if it’s just 
+                  for 20-30 minutes. Consistency builds momentum and muscle memory far more effectively 
+                  than sporadic, marathon coding sessions.
+                  <b>Build Personal Projects with Purpose:</b>Create applications that solve a 
+                  real problem for yourself or others. This provides a safe sandbox for experimentation 
+                  without professional pressure and offers genuine value to your portfolio.
+                  <b>Contribute to Open Source:</b>Get involved in the global development community. 
+                  Many open-source projects on GitHub have "good first issue" tags for newcomers, offering 
+                  a structured way to collaborate and learn professional best practices.
+                </p>
+          </div>
+      </div>
+
+      <div class="imgst">
+          <div class="imgsec4"></div>
+          <div  class="imgtext">
+            <h2>Collaboration and Feedback: Growing with Others</h2>
+                <p>
+                  oftware development is inherently a team sport. Your ability to communicate, 
+                  collaborate effectively, and receive constructive feedback is just as crucial 
+                  as your technical prowess for both personal growth and project success.
+                  <h4>Key Strategies:</h4>
+                  <b>Embrace Code Reviews as Learning Opportunities:</b>View code reviews as a vital part 
+                  of the quality assurance process, not personal criticism. Both giving insightful 
+                  feedback and receiving it graciously improves the overall code base and team knowledge.
+                  <b>Cultivate Strong Communication Skills:</b> Learn to articulate technical concepts 
+                  clearly to non-technical stakeholders (e.g., product managers, designers, clients). 
+                  This "translation" skill is highly valued in the industry.
+                  <b>Leverage Pair Programming:</b>Work alongside a peer to solve problems together. 
+                  This often leads to better solutions, fewer bugs, and shared learning experiences.
+                  <b>Don't Suffer in Silence:</b>If you're stuck on a problem for too long 
+                  (e.g., more than 30 minutes to an hour), ask for help. Wasting excessive time 
+                  in isolation is inefficient and often unnecessary.
+                </p>
+          </div>
+      </div>
+
+            <div class="imgst">
+          <div class="imgsec5"></div>
+          <div  class="imgtext">
+            <h2>The Developer's Mindset: Continuous Learning and Curiositys</h2>
+                <p>
+                  oftware development is inherently a team sport. Your ability to communicate, 
+                  collaborate effectively, and receive constructive feedback is just as crucial 
+                  as your technical prowess for both personal growth and project success.
+                  <h4>Key Strategies:</h4>
+                  <b>Embrace Code Reviews as Learning Opportunities:</b>View code reviews as a vital part 
+                  of the quality assurance process, not personal criticism. Both giving insightful 
+                  feedback and receiving it graciously improves the overall code base and team knowledge.
+                  <b>Cultivate Strong Communication Skills:</b> Learn to articulate technical concepts 
+                  clearly to non-technical stakeholders (e.g., product managers, designers, clients). 
+                  This "translation" skill is highly valued in the industry.
+                  <b>Leverage Pair Programming:</b>Work alongside a peer to solve problems together. 
+                  This often leads to better solutions, fewer bugs, and shared learning experiences.
+                  <b>Don't Suffer in Silence:</b>If you're stuck on a problem for too long 
+                  (e.g., more than 30 minutes to an hour), ask for help. Wasting excessive time 
+                  in isolation is inefficient and often unnecessary.
+                </p>
+          </div>
+      </div><br><br><br><br>
+
+      <!--Summary-->
+
+      <div class="summary">
+        <h2 style="font-size: 40px;font-weight: 800;">Summary</h2><br>
+        <p style="text-align: left;">
+          Becoming a better developer requires a holistic approach that moves beyond basic syntax to 
+          embrace a blend of strong technical fundamentals, soft skills, and a growth mindset. Key 
+          strategies include writing clean, maintainable code, mastering problem-solving fundamentals, 
+          and consistently practicing on real-world projects. Seeking feedback through collaboration and 
+          committing to lifelong learning in an ever-evolving tech landscape are crucial for sustained 
+          professional growth.
+        </p><br>
+        <p style="text-align: left;">
+          In conclusion, for you to become a top developer requires a holistic approach that balances 
+          technical skills (clean code, problem-solving fundamentals) with practical application 
+          (consistent real-world projects, continuous learning). Success in the modern tech industry 
+          also hinges on collaboration and soft skills, particularly seeking feedback and effective 
+          communication within teams.
+        </p><br><br>
+
+        <!--BS-->
+
+        <div class="bs">
+        <div class="big">
+          <div class="small"></div><br>
+          <div class="textboxs"><p>Master the Balance:</p> Tech Skills, Practical Apps, and Crucial Soft Skills</div>
+        </div>
+
+        <div class="big">
+          <div class="small1"></div><br>
+          <div class="textboxs"><p>The Three Pillars of Elite Development:</p> Fundamentals, Practice, and Collaboration</div>
+        </div>
+
+        <div class="big">
+          <div class="small2"></div><br>
+          <div class="textboxs"><p>Beyond the Code:</p>Collaboration and Continuous Learning Define Top Developers</di>
+        </div>
+
+        </div>
+      </div>
+      </div><br><br>
+
+      <!--Footer-->
+
+      <div class="footer">
+        <div class="news">
+        <p>Subscribe to our Newsletter</p>
+        
+        <form>
+        <label for="email">Enter your email address:</label>
+        <input type="email" id="email" placeholder="Email">
+        </form>
+
+        <button type="submit">Submit</button>
+        </div>
+  
+        <div class="headlines">
+          <a href="#">HOME</a>
+          <a href="#">ABOUT</a>
+          <a href="#">TECHNOLOGY</a>
+          <a href="#">DEVELOPMENT</a>
+          <a href="#">LEARNING & EDUCATION</a>
+          <a href="#">CONTACT</a>
+        </div>
+        
+        <!--Media-->
+        <div class="media">
+          <b>Contact Us:</b>
+          <div class="mediamax">
+          <div class="mediamin"></div>
+          <div class="mediamin1"></div>
+          <div class="mediamin2"></div>
+          <div class="mediamin3"></div>
+          </div>
+        </div>
+      </div>
+
+      <!--Footend-->
+
+      <div class="footend">
+        <div class="foot">
+        <hr> <br><br>
+        <p style="text-align: center; font-size: 14px; color: #0c0c0c;">
+           © 2025 Rakuten Clone — All Rights Reserved
+        </p>
+        </div>
+      </div>
+
+
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const navbar = document.getElementById('navbar');
+      const navLinks = document.getElementById('nav-links');
+
+      menuToggle.addEventListener('click', () => {
+        navbar.classList.toggle('open');
+      });
+
+      // Scroll effect for background
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    </script>
+
+</body>
+</html>
